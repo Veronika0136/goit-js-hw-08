@@ -45,3 +45,27 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+const refs = {
+  gallery: document.querySelector('.gallery'),
+};
+
+function imageTemplate(image) {
+  return `<li class="gallery-item">
+  <a class="gallery-link" href="${image.original}" onclick="return false;">
+    <img
+      class="gallery-image"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
+    />
+  </a>
+</li>`;
+}
+
+function imagesTemplate(images) {
+  return images.map(imageTemplate).join('');
+}
+
+const markup = imagesTemplate(images);
+refs.gallery.innerHTML = markup;
