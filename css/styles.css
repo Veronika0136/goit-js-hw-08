@@ -1,6 +1,7 @@
 .gallery {
   padding-top: 24px;
   padding-left: 156px;
+ 
 
   display: flex;
   flex-wrap: wrap;
@@ -21,3 +22,7 @@
   height: 200px;
 }
 
+.gallery-image:hover{
+  width: 376px;
+  height: 208px;
+}
