@@ -61,11 +61,11 @@ function imageTemplate(image) {
     />
   </a>
 </li>`;
-};
+}
 
 function imagesTemplate(images) {
   return images.map(imageTemplate).join('');
-};
+}
 
 const markup = imagesTemplate(images);
 refs.gallery.innerHTML = markup;
@@ -74,19 +74,14 @@ refs.gallery.addEventListener('click', evt => {
   if (evt.target === evt.currentTarget) return;
   const liElem = evt.target.closest('li');
   let href = liElem.firstElementChild.href;
-  console.log(href);
-  showModal(href);
+  let alt = liElem.firstElementChild.firstElementChild.alt;
+  showModal(href, alt);
 });
 
-function showModal(item) {
+function showModal(item, a) {
   const markup = `<div> class="modal"
-                 <img class="modal-img" src="${item}"/>
+                 <img class="modal-img" src="${item}" alt="${a}"/>
                   </div>`;
   const modal = basicLightbox.create(markup);
   modal.show();
-
-  
-};
-
-
-
+}
