@@ -61,11 +61,32 @@ function imageTemplate(image) {
     />
   </a>
 </li>`;
-}
+};
 
 function imagesTemplate(images) {
   return images.map(imageTemplate).join('');
-}
+};
 
 const markup = imagesTemplate(images);
 refs.gallery.innerHTML = markup;
+
+refs.gallery.addEventListener('click', evt => {
+  if (evt.target === evt.currentTarget) return;
+  const liElem = evt.target.closest('li');
+  let href = liElem.firstElementChild.href;
+  console.log(href);
+  showModal(href);
+});
+
+function showModal(item) {
+  const markup = `<div> class="modal"
+                 <img class="modal-img" src="${item}"/>
+                  </div>`;
+  const modal = basicLightbox.create(markup);
+  modal.show();
+
+  
+};
+
+
+
