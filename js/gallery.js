@@ -73,13 +73,16 @@ refs.gallery.innerHTML = markup;
 refs.gallery.addEventListener('click', evt => {
   if (evt.target === evt.currentTarget) return;
   const liElem = evt.target.closest('li');
-  let href = liElem.firstElementChild.href;
+
+  let href = evt.target.dataset.source;
+ 
+  
   let alt = liElem.firstElementChild.firstElementChild.alt;
   showModal(href, alt);
 });
 
 function showModal(item, a) {
-  const markup = `<div> class="modal"
+  const markup = `<div class="modal"> 
                  <img class="modal-img" src="${item}" alt="${a}"/>
                   </div>`;
   const modal = basicLightbox.create(markup);
